@@ -10,8 +10,13 @@ messagesRouter.get('/', async (req, res) => {
     const messages = await fileDb.getItems();
     res.send(messages);
   }else{
-    res.send({'messages': queryDate});
-    // create metod on filedb getItemsfromdate()
+    const date = new Date(queryDate);
+    if (isNaN(date.getDate())){
+      res.status(400).send({"error": "Date is invalid"});
+    }else {
+      const messages = await fileDb.getItemsFromDatetime(queryDate);
+      res.send(messages);
+    }
   }
 
 });

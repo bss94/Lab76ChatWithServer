@@ -15,3 +15,11 @@ export const createMessage = createAsyncThunk<void,FormMessage>(
     await axiosApi.post('/messages', newMessage);
   }
 )
+
+export const fetchNewMessages = createAsyncThunk<Message[],string>(
+  'messages/fetchNewMessages',
+  async (datetime)=>{
+    const {data:messages}=await axiosApi.get<Message[]>(`/messages?datetime=${datetime}`)
+    return messages
+  }
+)

@@ -24,6 +24,14 @@ const fileDb = {
       return data;
     }
   },
+  async getItemsFromDatetime(datetime: string) {
+   const index = data.findIndex(el=>el.datetime === datetime)
+    if(index > -1) {
+      return data.slice(index+1)
+    }else {
+      return []
+    }
+  },
 
   async addItem(item: IReqMessage) {
     const message: IMessage = {
