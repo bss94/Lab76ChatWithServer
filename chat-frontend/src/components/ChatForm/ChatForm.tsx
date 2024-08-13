@@ -1,6 +1,8 @@
 import {FormMessage} from '../../types.ts';
-import {ChangeEvent, useState} from 'react';
+import {ChangeEvent, FormEvent, useState} from 'react';
 import {Box, Button, FormControl, Grid, InputLabel, OutlinedInput, TextField} from '@mui/material';
+import {useAppDispatch} from '../../app/hooks.ts';
+import {createMessage} from '../../store/messagesThunk.ts';
 
 const initialState: FormMessage = {
   author: '',
@@ -8,6 +10,7 @@ const initialState: FormMessage = {
 };
 
 const ChatForm = () => {
+  const dispatch = useAppDispatch();
   const [formState, setFormState] = useState<FormMessage>({
     ...initialState
   });
@@ -21,7 +24,11 @@ const ChatForm = () => {
       };
     });
   };
+  const onFormSubmit = async (event:FormEvent)=>{
+    event.preventDefault();
+    await dispatch(createMessage({...formState}))
 
+  }
 
   return (
     <Grid container spacing={2}>
@@ -32,6 +39,7 @@ const ChatForm = () => {
         m:2,
       }}
       autoComplete="off"
+      onSubmit={onFormSubmit}
     >
       <Grid container alignItems="center">
         <FormControl fullWidth sx={{my: 2,}}>

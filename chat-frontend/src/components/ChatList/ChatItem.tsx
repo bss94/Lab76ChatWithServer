@@ -1,26 +1,27 @@
 import React from 'react';
 import {Card, CardContent, Typography} from '@mui/material';
 
-interface Props{
+interface Props {
   message: string;
   author: string;
-  datetime:string
+  datetime: string;
 }
 
-const ChatItem:React.FC<Props> = ({
-  author,datetime,message,
+const ChatItem: React.FC<Props> = ({
+  author, datetime, message,
 }) => {
   return (
-    <Card sx={{mb: 1}}>
+
+    <Card sx={{mb: 1,width:'100%'}}>
       <CardContent>
-        <Typography sx={{ fontSize: 12 }} color="text.secondary" gutterBottom>
-        DATETIME {datetime}
+        <Typography sx={{fontSize: 12}} color="text.secondary">
+          {datetime}
         </Typography>
         <Typography variant="h6" component="div">
-         Author {author}
+          {author} send:
         </Typography>
         <Typography variant="body2">
-         MESSAGE {message}
+          {message}
         </Typography>
       </CardContent>
     </Card>
