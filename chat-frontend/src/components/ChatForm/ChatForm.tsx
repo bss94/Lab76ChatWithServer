@@ -1,6 +1,6 @@
 import {FormMessage} from '../../types';
 import {ChangeEvent, FormEvent, useState} from 'react';
-import {Box, Button, FormControl, Grid, InputLabel, OutlinedInput, TextField} from '@mui/material';
+import {Box, FormControl, Grid, InputLabel, OutlinedInput, TextField} from '@mui/material';
 import axiosApi from '../../axiosApi';
 import {toast} from 'react-toastify';
 import SendIcon from '@mui/icons-material/Send';
@@ -78,16 +78,16 @@ const ChatForm = () => {
           required
           onChange={onHandleChange}
         />
-        <Button type="submit" variant="outlined" sx={{mt: 1}}>send</Button>
-        {/*<LoadingButton*/}
-        {/*  type="submit"*/}
-        {/*  endIcon={<SendIcon/>}*/}
-        {/*  loading={sending}*/}
-        {/*  loadingPosition="end"*/}
-        {/*  variant="contained"*/}
-        {/*>*/}
-        {/*  <span>Send</span>*/}
-        {/*</LoadingButton>*/}
+        <LoadingButton
+          sx={{my:2}}
+          type="submit"
+          endIcon={<SendIcon/>}
+          loading={sending}
+          loadingPosition="end"
+          variant="contained"
+        >
+          <span>Send</span>
+        </LoadingButton>
       </Box>
     </Grid>
   );
