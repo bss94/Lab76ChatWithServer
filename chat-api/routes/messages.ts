@@ -5,8 +5,15 @@ import {IReqMessage} from '../types';
 const messagesRouter = express.Router();
 
 messagesRouter.get('/', async (req, res) => {
-  const products = await fileDb.getItems();
-  res.send(products);
+  const queryDate = req.query.datetime as string;
+  if (!queryDate) {
+    const messages = await fileDb.getItems();
+    res.send(messages);
+  }else{
+    res.send({'messages': queryDate});
+    // create metod on filedb getItemsfromdate()
+  }
+
 });
 
 messagesRouter.post('/', async (req, res) => {
