@@ -1,19 +1,18 @@
 import ChatItem from './ChatItem.tsx';
-import {CircularProgress, Grid} from '@mui/material';
-import {useAppSelector} from '../../app/hooks.ts';
-import {selectFetching, selectMessages} from '../../store/messagesSlice.ts';
+import {Grid} from '@mui/material';
+import {Message} from '../../types.ts';
+import React from 'react';
 
-const ChatList = () => {
-  const fetching = useAppSelector(selectFetching)
-  const messages = useAppSelector(selectMessages)
+interface Props {
+  messages: Message[];
+}
 
+const ChatList: React.FC<Props> = ({messages}) => {
   return (
     <Grid container spacing={2} direction="column">
-      {fetching?<div><CircularProgress size="lg" /> </div>  :
-      messages.map((item)=>{
-        return <ChatItem message={item.message} author={item.author} datetime={item.datetime} key={item.id}/>
-      })
-      }
+      {messages.map((item) => {
+        return <ChatItem message={item.message} author={item.author} datetime={item.datetime} key={item.id}/>;
+      })}
     </Grid>
   );
 };

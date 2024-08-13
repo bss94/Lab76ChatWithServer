@@ -18,18 +18,18 @@ const fileDb = {
   },
 
   async getItems() {
-    if(data.length>30){
-      return data.slice(data.length - 30)
-    }else {
+    if (data.length > 30) {
+      return data.slice(data.length - 30);
+    } else {
       return data;
     }
   },
   async getItemsFromDatetime(datetime: string) {
-   const index = data.findIndex(el=>el.datetime === datetime)
-    if(index > -1) {
-      return data.slice(index+1)
-    }else {
-      return []
+    const index = data.findIndex(el => el.datetime === datetime);
+    if (index > -1) {
+      return data.slice(index + 1);
+    } else {
+      return [];
     }
   },
 

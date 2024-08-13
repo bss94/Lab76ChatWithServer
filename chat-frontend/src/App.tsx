@@ -4,7 +4,7 @@ import Chat from './containers/Chat/Chat.tsx';
 const App = () => {
   return (
     <>
-      <Container maxWidth="sm">
+      <Container sx={{mt: 5}} maxWidth="sm">
         <Chat/>
       </Container>
     </>
