@@ -23,7 +23,7 @@ const ChatItem: React.FC<Props> = ({
     } else return dayjs(date).format('DD.MM.YYYY HH:mm');
   };
   return (
-    <Card sx={{mb: 1, width: '100%'}}>
+    <Card variant="outlined" sx={{mb: 1, width: '100%'}}>
       <CardContent>
         <Typography sx={{fontSize: 12}} color="text.secondary">
           {setDate(datetime)}
